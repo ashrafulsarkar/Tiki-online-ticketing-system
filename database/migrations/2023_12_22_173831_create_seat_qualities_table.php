@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('seat_qualities', function (Blueprint $table) {
             $table->id();
-            $table->string('quality');
+            $table->string('quality')->unique();
             $table->timestamps();
         });
     }

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('trip_id');
             $table->foreign('trip_id')->references('id')->on('trips')->restrictOnDelete()->cascadeOnUpdate();
-			$table->tinyInteger( 'price' );
+			$table->smallInteger( 'price' );
 			$table->tinyInteger( 'seat_quantity' );
-			$table->tinyInteger( 'total_price' );
+			$table->integer( 'total_price' );
             $table->timestamps();
         });
     }

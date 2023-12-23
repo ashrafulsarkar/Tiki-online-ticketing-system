@@ -16,10 +16,13 @@ return new class extends Migration
             $table->unsignedBigInteger('bus_id');
             $table->foreign('bus_id')->references('id')->on('buses')->restrictOnDelete()->cascadeOnUpdate();
             $table->string('from_location');
+            $table->foreign('from_location')->references('location')->on('locations')->restrictOnDelete()->cascadeOnUpdate();
             $table->string('to_location');
+            $table->foreign('to_location')->references('location')->on('locations')->restrictOnDelete()->cascadeOnUpdate();
             $table->string('seat_quality');
+            $table->foreign('seat_quality')->references('quality')->on('seat_qualities')->restrictOnDelete()->cascadeOnUpdate();
             $table->string('seat_quantity');
-            $table->tinyInteger('price');
+            $table->smallInteger('price');
             $table->timestamps();
         });
     }

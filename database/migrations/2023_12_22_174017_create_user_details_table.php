@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->cascadeOnUpdate();
-			$table->tinyInteger( 'phone_number' );
+			$table->integer( 'phone_number' );
 			$table->text( 'address' );
             $table->timestamps();
         });

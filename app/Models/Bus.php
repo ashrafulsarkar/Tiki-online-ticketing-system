@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Bus extends Model
 {
     use HasFactory;
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+    public function busDetails(){
+        return $this->hasMany(BusDetail::class);
+    }
 }

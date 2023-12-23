@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\busController;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\locationController;
+use App\Http\Controllers\seatQualityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,25 +17,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', []);
-Route::post('/', []);
+Route::get( '/', [] );
+Route::post( '/', [] );
 
-Route::get('/dashboard', []);
+Route::get( '/dashboard', [ dashboardController::class, 'view' ] );
 
-Route::get('/location', []);
-Route::post('/location', []);
-Route::delete('/location', []);
+Route::get( '/location', [ locationController::class, 'view' ] )->name( 'location' );
+Route::get( '/location/add', [ locationController::class, 'addview' ] );
+Route::post( '/location/add', [ locationController::class, 'addlocation' ] );
+Route::delete( '/location', [ locationController::class, 'delete' ] );
 
-Route::get('/seat-quality', []);
-Route::post('/seat-quality', []);
-Route::delete('/seat-quality', []);
+Route::get( '/quality', [ seatQualityController::class, 'view' ] )->name( 'quality' );
+Route::get( '/quality/add', [ seatQualityController::class, 'addview' ] );
+Route::post( '/quality/add', [ seatQualityController::class, 'addquality' ] );
+Route::delete( '/quality', [ seatQualityController::class, 'delete' ] );
 
-Route::get('/bus', []);
-Route::post('/bus', []);
-Route::put('/bus', []);
-Route::delete('/bus', []);
+Route::get( '/bus', [ busController::class, 'view' ] )->name( 'bus' );
+Route::get( '/bus/add', [ busController::class, 'addview' ] );
+Route::post( '/bus/add', [ busController::class, 'addbus' ] );
+Route::get( '/bus/{id}', [ busController::class, 'idview' ] );
+Route::post( '/bus/{id}', [ busController::class, 'addbusdetails' ] )->name('bus.details');
 
-Route::get('/trip', []);
-Route::post('/trip', []);
-Route::put('/trip', []);
-Route::delete('/trip', []);
+Route::get( '/bus/{id}/edit', [ busController::class, 'edit' ] );
+Route::put( '/bus', [] );
+Route::delete( '/bus', [ busController::class, 'delete' ] );
+
+Route::get( '/trip', [] );
+Route::post( '/trip', [] );
+Route::put( '/trip', [] );
+Route::delete( '/trip', [] );
