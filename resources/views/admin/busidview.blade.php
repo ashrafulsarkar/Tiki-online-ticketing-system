@@ -38,9 +38,10 @@
                     <td class="border border-slate-300 p-2">{{ $details->price }}</td>
                     <td class="border border-slate-300 p-2 text-center">
                         <a href="#" class="text-red-600"
-                            onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this bus?')) { document.getElementById('delete-form-{{ $bus->id }}').submit(); }">Delete</a>
-                        <form id="delete-form-{{ $bus->id }}" action="/bus" method="POST" style="display: none;">
-                            <input type="hidden" name="delete" value="{{$bus->id}}">
+                            onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this bus?')) { document.getElementById('delete-form-{{$busid}}').submit(); }">Delete</a>
+                        <form id="delete-form-{{$busid}}" action="/bus/{{$busid}}" method="POST" style="display: none;">
+                            <input type="hidden" name="busid" value="{{$busid}}">
+                            <input type="hidden" name="delete" value="{{$details->id}}">
                             @csrf
                             @method('DELETE')
                         </form>
@@ -67,6 +68,7 @@
                             <div class="mt-2">
                                 <select name="from_location" id="from"
                                     class="px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <option value="" disabled selected>Select One</option>
                                     @foreach ($locations as $location)
                                     <option value="{{$location->location}}">{{$location->location}}</option>
                                     @endforeach
@@ -78,6 +80,7 @@
                             <div class="mt-2">
                                 <select name="to_location" id="to"
                                     class="px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <option value="" disabled selected>Select One</option>
                                     @foreach ($locations as $location)
                                     <option value="{{$location->location}}">{{$location->location}}</option>
                                     @endforeach
@@ -90,6 +93,7 @@
                             <div class="mt-2">
                                 <select name="seat_quality" id="quality"
                                     class="px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <option value="" disabled selected>Select One</option>
                                     @foreach ($qualities as $quality)
                                     <option value="{{$quality->quality}}">{{$quality->quality}}</option>
                                     @endforeach

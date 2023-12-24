@@ -9,7 +9,6 @@ class BusDetail extends Model
 {
     use HasFactory;
     protected $hidden = [
-        'id',
         'bus_id',
         'created_at',
         'updated_at',
