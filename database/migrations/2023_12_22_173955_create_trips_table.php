@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
 			$table->date( 'trip_date' );
-            $table->unsignedBigInteger('bus_details_id');
-            $table->foreign('bus_details_id')->references('id')->on('bus_details')->restrictOnDelete()->cascadeOnUpdate();
+            $table->string('from_location');
+            $table->foreign('from_location')->references('from_location')->on('bus_details')->restrictOnDelete()->cascadeOnUpdate();
+            $table->string('to_location');
+            $table->foreign('to_location')->references('to_location')->on('bus_details')->restrictOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

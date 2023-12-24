@@ -4,6 +4,7 @@ use App\Http\Controllers\busController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\locationController;
 use App\Http\Controllers\seatQualityController;
+use App\Http\Controllers\tripController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,7 @@ Route::get( '/bus/{id}/edit', [ busController::class, 'edit' ] );
 Route::put( '/bus/{id}/edit', [ busController::class, 'editdb' ] );
 
 
-Route::get( '/trip', [] );
-Route::post( '/trip', [] );
-Route::put( '/trip', [] );
-Route::delete( '/trip', [] );
+Route::get( '/trip', [tripController::class, 'view'] )->name('trip');
+Route::get( '/trip/add', [tripController::class, 'addview'] );
+Route::post( '/trip/add', [tripController::class, 'addtrip'] );
+Route::delete( '/trip', [tripController::class, 'delete'] );

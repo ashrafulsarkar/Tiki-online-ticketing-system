@@ -32,7 +32,6 @@ class busController extends Controller {
 	}
 	public function idview( $id ) {
 		$bus      = Bus::with('busDetails')->where('id', $id)->get();
-		// return $bus;
 		$location = Location::get();
 		$quality  = SeatQuality::get();
 
