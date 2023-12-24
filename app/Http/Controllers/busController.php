@@ -63,9 +63,19 @@ class busController extends Controller {
 		BusDetail::where( 'id', $id )->delete();
 		return Redirect::route( "bus.details", ['id' => $busid] );
 	}
-	public function delete( Request $request ) {
-		$id = $request->delete;
-		Bus::where( 'id', $id )->delete();
+	public function edit( $id ) {
+		$busdata = Bus::where( 'id', $id )->get();
+		return view('admin.editBus', ['buses' => $busdata, 'busid' => $id]);
+	}
+	public function editdb( Request $request ) {
+		$busid   = $request->id;
+		$bus = Bus::find($busid);
+		if ($bus) {
+			$bus->name   = $request->name;
+			$bus->number = $request->number;
+			$bus->total_seat = $request->total_seat;
+			$bus->save();
+		}
 		return Redirect::route( 'bus' );
 	}
 }

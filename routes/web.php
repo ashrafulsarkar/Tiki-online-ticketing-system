@@ -38,10 +38,9 @@ Route::post( '/bus/add', [ busController::class, 'addbus' ] );
 Route::get( '/bus/{id}', [ busController::class, 'idview' ] );
 Route::post( '/bus/{id}', [ busController::class, 'addbusdetails' ] )->name('bus.details');
 Route::delete( '/bus/{id}', [ busController::class, 'detailsDelete' ] );
-
 Route::get( '/bus/{id}/edit', [ busController::class, 'edit' ] );
-Route::put( '/bus', [] );
-Route::delete( '/bus', [ busController::class, 'delete' ] );
+Route::put( '/bus/{id}/edit', [ busController::class, 'editdb' ] );
+
 
 Route::get( '/trip', [] );
 Route::post( '/trip', [] );
