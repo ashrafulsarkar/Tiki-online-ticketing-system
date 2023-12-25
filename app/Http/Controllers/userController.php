@@ -20,7 +20,6 @@ class userController extends Controller {
 		$date     = $request->date;
 		if ( $date ) {
 			$trip = Trip::with( 'seatallocations' )->where( 'trip_date', $date )->get();
-			// return $trip;
 			if ( count( $trip ) > 0 ) {
 				$from_location = $request->from_city;
 				$to_location   = $request->to_city;
@@ -51,8 +50,8 @@ class userController extends Controller {
 		$email         = $request->email;
 
 		$userFound = UserDetail::select( 'id' )->where( 'email', $email )->get();
-		$userID    = $userFound[0]->id;
-		if ( ! $userID ) {
+		
+		if ( ! count($userFound) ) {
 			$userDetails = [ 
 				'name'         => $request->name,
 				'email'        => $email,
@@ -61,7 +60,10 @@ class userController extends Controller {
 
 			$userCreate = UserDetail::create( $userDetails );
 			$userID     = $userCreate->id;
+		}else {
+			$userID    = $userFound[0]->id;
 		}
+
 		if ( $userID ) {
 			$booked       = [ 
 				'user_id'       => $userID,
