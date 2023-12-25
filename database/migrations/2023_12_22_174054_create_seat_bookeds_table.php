@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('seat_bookeds', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreign('user_id')->references('id')->on('user_details')->restrictOnDelete()->cascadeOnUpdate();
             $table->unsignedBigInteger('trip_id');
             $table->foreign('trip_id')->references('id')->on('trips')->restrictOnDelete()->cascadeOnUpdate();
 			$table->smallInteger( 'price' );

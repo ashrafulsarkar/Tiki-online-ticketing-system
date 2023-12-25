@@ -16,10 +16,4 @@ class BusDetail extends Model
     public function bus() {
         return $this->belongsTo(Bus::class);
     }
-    // public function location(){
-    //     return $this->belongsTo(Location::class);
-    // }
-    // public function seatQuality(){
-    //     return $this->belongsTo(SeatQuality::class);
-    // }
 }
